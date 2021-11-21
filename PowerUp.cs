@@ -44,7 +44,7 @@ public class PowerUp : MonoBehaviour
             player.UpdateSpeed();
             break;
           case 3:
-            Debug.log("lol");
+            Debug.Log("lol");
             break;
         }
       }
