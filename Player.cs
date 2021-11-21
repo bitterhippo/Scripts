@@ -82,17 +82,17 @@ public class Player : MonoBehaviour
 
   public void Damage()
   {
-    if (_shieldActive != true)
-    {
-      _lives -= 1;
+    _lives -= 1;
 
       if (_lives < 1)
       {
         _spawnManager.OnPlayerDeath();
         Destroy(this.gameObject);
       }
-    }
-
+      else
+      {
+        Destroy(this.gameObject);
+      }
   }
 
   public void UpdateWeapon()
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
 
   IEnumerator ShieldActivePowerDownRoutine()
   {
-    _shieldActive = false;
     yield return new WaitForSeconds(5.0f);
+    _shieldActive = false;
   }
 }
