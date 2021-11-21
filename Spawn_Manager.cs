@@ -10,8 +10,7 @@ public class Spawn_Manager : MonoBehaviour
   private GameObject _tripleShotPrefab;
 
   [SerializeField]
-  private GameObject _willThisWork;
-
+  private GameObject _speedUpPrefab;
   [SerializeField]
   private GameObject _enemyContainer;
 
@@ -67,7 +66,7 @@ public class Spawn_Manager : MonoBehaviour
     while (_playerAlive)
     {
       Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-      GameObject newTripleShot = Instantiate(_willThisWork, posToSpawn, Quaternion.identity);
+      GameObject newTripleShot = Instantiate(_speedUpPrefab;, posToSpawn, Quaternion.identity);
       yield return new WaitForSeconds(15.0f);
     }
   }
