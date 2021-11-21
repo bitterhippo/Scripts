@@ -4,52 +4,55 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    [SerializeField]
-    public float _speed = 3.0f;
+  [SerializeField]
+  public float _speed = 3.0f;
 
-    [SerializeField]
-    public int _powerUpId;
-    // Start is called before the first frame update
-    void Start()
+  [SerializeField]
+  public int _powerUpId;
+  // Start is called before the first frame update
+  void Start()
+  {
+
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    Movement();
+
+    if (transform.position.y < -6.0f)
     {
-        
+      Destroy(this.gameObject);
     }
+  }
 
-    // Update is called once per frame
-    void Update()
+  private void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.tag == "Player")
     {
-        Movement();
+      Player player = other.transform.GetComponent<Player>();
 
-        if (transform.position.y < -6.0f)
+      if (player != null)
+      {
+        Destroy(this.gameObject);
+        switch (_powerUpId)
         {
-            Destroy(this.gameObject);
+          case 0:
+            player.UpdateWeapon();
+            break;
+          case 1:
+            player.UpdateSpeed();
+            break;
+          case 3:
+            Debug.log("lol");
+            break;
         }
+      }
     }
+  }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            Player player = other.transform.GetComponent<Player>();
-
-            if (player != null)
-            {
-                
-                if (_powerUpId == 0)
-                {
-                    Destroy(this.gameObject);
-                    player.UpdateWeapon();
-                } else if (_powerUpId == 1)
-                {
-                    Destroy(this.gameObject);
-                    player.UpdateSpeed();
-                }
-            }
-        }
-    }
-
-    private void Movement()
-    {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
-    }
+  private void Movement()
+  {
+    transform.Translate(Vector3.down * _speed * Time.deltaTime);
+  }
 }
