@@ -9,6 +9,8 @@ MonoImporter:
   - _tripleShotPrefab: {fileID: 1609336804567512006, guid: f0251f117acec1f47bbde4629cacc2ce,
       type: 3}
   - _enemyContainer: {instanceID: 0}
+  - _speedUpPrefab: {fileID: 2319982547680150510, guid: 1da5a3a66bb4e4042a670556f31f8631,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

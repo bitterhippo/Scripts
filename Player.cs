@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
   private Spawn_Manager _spawnManager;
   [SerializeField]
   private bool TripleShot = false;
+  
 
   void Start()
   {
@@ -89,12 +90,24 @@ public class Player : MonoBehaviour
   public void UpdateWeapon()
   {
     TripleShot = true;
-    StartCoroutine(TripleShotPOwerDownRoutine());
+    StartCoroutine(TripleShotPowerDownRoutine());
   }
 
-  IEnumerator TripleShotPOwerDownRoutine()
+  IEnumerator TripleShotPowerDownRoutine()
   {
     yield return new WaitForSeconds(5.0f);
     TripleShot = false;
+  }
+
+  public void UpdateSpeed()
+  {
+    _speed = 10.0f;
+    StartCoroutine(SpeedUpPowerDownRoutine());
+  }
+
+  IEnumerator SpeedUpPowerDownRoutine()
+  {
+    yield return new WaitForSeconds(10.0f);
+    _speed = 3.5f;
   }
 }
