@@ -18,8 +18,10 @@ public class Player : MonoBehaviour
   private int _lives = 3;
   private Spawn_Manager _spawnManager;
   [SerializeField]
-
   private bool _shieldActive = false;
+
+  [SerializeField]
+  private GameObject _shieldPrefab;
   private bool TripleShot = false;
 
 
@@ -121,6 +123,7 @@ public class Player : MonoBehaviour
   public void UpdateShield()
   {
     _shieldActive = true;
+    _shieldPrefab.SetActive(true);
     StartCoroutine(ShieldActivePowerDownRoutine());
   }
 
