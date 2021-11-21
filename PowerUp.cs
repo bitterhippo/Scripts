@@ -43,7 +43,7 @@ public class PowerUp : MonoBehaviour
           case 1:
             player.UpdateSpeed();
             break;
-          case 3:
+          case 2:
             player.UpdateShield();
             break;
         }

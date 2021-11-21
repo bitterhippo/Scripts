@@ -82,17 +82,16 @@ public class Player : MonoBehaviour
 
   public void Damage()
   {
-    _lives -= 1;
+    if (_shieldActive != true)
+    {
+      _lives -= 1;
 
       if (_lives < 1)
       {
         _spawnManager.OnPlayerDeath();
         Destroy(this.gameObject);
       }
-      else
-      {
-        Destroy(this.gameObject);
-      }
+    }
   }
 
   public void UpdateWeapon()
