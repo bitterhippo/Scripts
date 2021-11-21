@@ -130,6 +130,7 @@ public class Player : MonoBehaviour
   IEnumerator ShieldActivePowerDownRoutine()
   {
     yield return new WaitForSeconds(5.0f);
+    _shieldPrefab.SetActive(false);
     _shieldActive = false;
   }
 }
