@@ -6,11 +6,12 @@ public class Spawn_Manager : MonoBehaviour
 {
   [SerializeField]
   private GameObject _enemyPrefab;
-  [SerializeField]
-  private GameObject[] unitySucks;
 
   [SerializeField]
   private GameObject _enemyContainer;
+
+  [SerializeField]
+  private GameObject[] powerups;
 
 
   [SerializeField]
