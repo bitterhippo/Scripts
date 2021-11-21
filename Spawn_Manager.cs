@@ -54,7 +54,7 @@ public class Spawn_Manager : MonoBehaviour
     while (_playerAlive)
     {
       Vector3 posToSpawn = new Vector3(Random.Range(-8f, 8f), 7, 0);
-      GameObject newTripleShot = Instantiate(powerups[Random.Range(0, 2)], posToSpawn, Quaternion.identity);
+      GameObject newTripleShot = Instantiate(powerups[Random.Range(0, 3)], posToSpawn, Quaternion.identity);
       yield return new WaitForSeconds(10.0f);
     }
   }

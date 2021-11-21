@@ -18,8 +18,10 @@ public class Player : MonoBehaviour
   private int _lives = 3;
   private Spawn_Manager _spawnManager;
   [SerializeField]
+
+  private bool _shieldActive = false;
   private bool TripleShot = false;
-  
+
 
   void Start()
   {
@@ -71,20 +73,26 @@ public class Player : MonoBehaviour
     if (TripleShot)
     {
       Instantiate(_tripleShot, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-    } else {
+    }
+    else
+    {
       Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
     }
   }
 
-  public void Damage() 
+  public void Damage()
   {
-    _lives -= 1;
-
-    if (_lives < 1 )
+    if (_shieldActive != true)
     {
-      _spawnManager.OnPlayerDeath();
-      Destroy(this.gameObject);
+      _lives -= 1;
+
+      if (_lives < 1)
+      {
+        _spawnManager.OnPlayerDeath();
+        Destroy(this.gameObject);
+      }
     }
+
   }
 
   public void UpdateWeapon()
@@ -109,5 +117,17 @@ public class Player : MonoBehaviour
   {
     yield return new WaitForSeconds(10.0f);
     _speed = 3.5f;
+  }
+
+  public void UpdateShield()
+  {
+    _shieldActive = true;
+    StartCoroutine(ShieldActivePowerDownRoutine());
+  }
+
+  IEnumerator ShieldActivePowerDownRoutine()
+  {
+    _shieldActive = false;
+    yield return new WaitForSeconds(5.0f);
   }
 }
