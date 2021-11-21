@@ -10,6 +10,9 @@ public class Spawn_Manager : MonoBehaviour
   private GameObject _tripleShotPrefab;
 
   [SerializeField]
+  private GameObject _speedUpPrefab;
+
+  [SerializeField]
   private GameObject _enemyContainer;
 
 
