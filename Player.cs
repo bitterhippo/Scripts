@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
 
   [SerializeField]
   private GameObject _shieldPrefab;
+
+  [SerializeField]
+  private int _score = 0;
   private bool TripleShot = false;
 
 
@@ -132,5 +135,10 @@ public class Player : MonoBehaviour
     yield return new WaitForSeconds(5.0f);
     _shieldPrefab.SetActive(false);
     _shieldActive = false;
+  }
+
+  public void UpdateScore()
+  {
+    _score += 10;
   }
 }

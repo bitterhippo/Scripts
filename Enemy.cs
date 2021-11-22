@@ -31,10 +31,10 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Player player = other.transform.GetComponent<Player>();
 
         if (other.tag == "Player") 
         {
-            Player player = other.transform.GetComponent<Player>();
             
             if (player != null)
             {
@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(other.gameObject);
             Destroy(this.gameObject);
+            player.UpdateScore();
         }
     }
 }
