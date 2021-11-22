@@ -13,10 +13,19 @@ public class UI_Manager : MonoBehaviour
   private Image _LivesImg;
   [SerializeField]
   private Text _gameOver;
+  [SerializeField]
+  private Text _restart;
+  private Game_Manager _gameManager;
   // Start is called before the first frame update
   void Start()
   {
     _scoreText.text = "Score: " + 0;
+    _gameManager = GameObject.Find("Game_Manager").GetComponent<Game_Manager>();
+
+    if (_gameManager == null)
+    {
+        Debug.LogError("Game Manager is NULL");
+    }
   }
 
   public void UpdateScore(int score)
@@ -31,6 +40,14 @@ public class UI_Manager : MonoBehaviour
 
   public void GameOver()
   {
+      _gameManager.GameOver();
       _gameOver.text = "LOL NOOB";
+      _restart.text = "Press the 'R' key to restart";
+  }
+
+  public void Restart()
+  {
+      _gameOver.text = "";
+      _restart.text = "";
   }
 }

@@ -102,14 +102,19 @@ public class Player : MonoBehaviour
 
       if (_lives < 1)
       {
-        _spawnManager.OnPlayerDeath();
-        _uiManager.UpdateLives(_lives);
-        _uiManager.GameOver();
-        Destroy(this.gameObject);
+        GameOverSequence();
       }
     }
   }
 
+  void GameOverSequence()
+  {
+    _spawnManager.OnPlayerDeath();
+    _uiManager.UpdateLives(_lives);
+    _uiManager.GameOver();
+    Destroy(this.gameObject);
+  }
+  
   public void UpdateWeapon()
   {
     TripleShot = true;
