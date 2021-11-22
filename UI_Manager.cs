@@ -11,6 +11,8 @@ public class UI_Manager : MonoBehaviour
   private Sprite[] _liveSprites;
   [SerializeField]
   private Image _LivesImg;
+  [SerializeField]
+  private Text _gameOver;
   // Start is called before the first frame update
   void Start()
   {
@@ -25,5 +27,10 @@ public class UI_Manager : MonoBehaviour
   public void UpdateLives(int livesLeft)
   {
       _LivesImg.sprite = _liveSprites[livesLeft];
+  }
+
+  public void GameOver()
+  {
+      _gameOver.text = "LOL NOOB";
   }
 }
