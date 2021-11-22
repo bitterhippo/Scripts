@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
   [SerializeField]
   private int _score = 0;
   private bool TripleShot = false;
+  private UI_Manager _uiManager;
 
 
   void Start()
@@ -34,10 +35,16 @@ public class Player : MonoBehaviour
     //Whatever current position is assign it to some kind of default.
     transform.position = new Vector3(0, 0, 0);
     _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<Spawn_Manager>();
+    _uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
 
     if (_spawnManager == null)
     {
       Debug.LogError("The Spawn Manager is NULL.");
+    }
+
+    if (_uiManager == null)
+    {
+      Debug.LogError("The UI Manager is NULL");
     }
   }
 
@@ -137,8 +144,9 @@ public class Player : MonoBehaviour
     _shieldActive = false;
   }
 
-  public void UpdateScore()
+  public void UpdateScore(int score)
   {
-    _score += 10;
+    _score += score;
+    _uiManager.UpdateScore(_score);
   }
 }
