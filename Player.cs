@@ -25,8 +25,7 @@ public class Player : MonoBehaviour
 
   [SerializeField]
   private int _score = 0;
-  [SerializeField]
-  private Sprite[] _sprites;
+
   private bool TripleShot = false;
   private UI_Manager _uiManager;
 
@@ -99,10 +98,12 @@ public class Player : MonoBehaviour
     if (_shieldActive != true)
     {
       _lives -= 1;
+      _uiManager.UpdateLives(_lives);
 
       if (_lives < 1)
       {
         _spawnManager.OnPlayerDeath();
+        _uiManager.UpdateLives(_lives);
         Destroy(this.gameObject);
       }
     }
