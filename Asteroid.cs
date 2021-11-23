@@ -11,10 +11,13 @@ public class Asteroid : MonoBehaviour
   private GameObject _player;
   [SerializeField]
   private GameObject _explosion;
+
+  [SerializeField]
+  private Spawn_Manager _spawnManager;
   // Start is called before the first frame update
   void Start()
   {
-
+    _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<Spawn_Manager>();
   }
 
   // Update is called once per frame
@@ -25,19 +28,12 @@ public class Asteroid : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-
-    if (other.tag == "Player")
-    {
-      Vector3 currentLocation = new Vector3(0, 0, 0);
-      GameObject newExplion = Instantiate(_explosion, currentLocation, Quaternion.identity);
-      Destroy(this.gameObject);
-    }
-
     if (other.tag == "Lazer")
     {
-      Vector3 currentLocation = new Vector3(0, 0, 0);
-      GameObject newExplion = Instantiate(_explosion, currentLocation, Quaternion.identity);
-      Destroy(this.gameObject);
+      Instantiate(_explosion, transform.position, Quaternion.identity);
+      Destroy(other.gameObject);
+      _spawnManager.StartSpawning();
+      Destroy(this.gameObject, 0.25f);
     }
   }
 }
