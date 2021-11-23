@@ -23,15 +23,21 @@ public class Asteroid : MonoBehaviour
     transform.Rotate(Vector3.forward * _rotateSpeed * Time.deltaTime);
   }
 
-  private void OnTriggerEnter2D(Collider2d other)
+  private void OnTriggerEnter2D(Collider2D other)
   {
-    Player player = other.transform.GetComponent<Player>();
 
-    if (other.tag == player)
+    if (other.tag == "Player")
     {
       Vector3 currentLocation = new Vector3(0, 0, 0);
       GameObject newExplion = Instantiate(_explosion, currentLocation, Quaternion.identity);
-      Destory(this.gameObject);
+      Destroy(this.gameObject);
+    }
+
+    if (other.tag == "Lazer")
+    {
+      Vector3 currentLocation = new Vector3(0, 0, 0);
+      GameObject newExplion = Instantiate(_explosion, currentLocation, Quaternion.identity);
+      Destroy(this.gameObject);
     }
   }
 }
