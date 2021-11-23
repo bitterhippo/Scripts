@@ -12,6 +12,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _player = GameObject.Find("Player").GetComponent<Player>();
+
+        if (_player == null)
+        {
+           Debug.LogError("@Enemy.cs > _player not found");
+        }
     }
 
     // Update is called once per frame
