@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
     {
       Debug.LogError("The UI Manager is NULL");
     }
+
+    _leftEngine.SetActive(true);
   }
 
   // Update is called once per frame
