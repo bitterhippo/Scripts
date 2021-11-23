@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
   [SerializeField]
   private int _score = 0;
 
+  [SerializeField]
+  private GameObject _rightEngine, _leftEngine;
+
   private bool TripleShot = false;
   private UI_Manager _uiManager;
 
@@ -99,6 +102,14 @@ public class Player : MonoBehaviour
     {
       _lives -= 1;
       _uiManager.UpdateLives(_lives);
+
+      if (_lives == 2)
+      {
+        _leftEngine.SetActive(true);
+      } else if (_lives == 1) 
+      {
+        _rightEngine.SetActive(true);
+      }
 
       if (_lives < 1)
       {
