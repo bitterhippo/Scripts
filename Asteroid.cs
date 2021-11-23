@@ -30,10 +30,10 @@ public class Asteroid : MonoBehaviour
   {
     if (other.tag == "Lazer")
     {
+      Destroy(this.gameObject, 0.25f);
       Instantiate(_explosion, transform.position, Quaternion.identity);
       Destroy(other.gameObject);
       _spawnManager.StartSpawning();
-      Destroy(this.gameObject, 0.25f);
     }
   }
 }
